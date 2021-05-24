@@ -55,19 +55,8 @@ const plugins = () => {
       new ImageMinimizerPlugin({
         minimizerOptions: {
           plugins: [
-            ["gifsicle", { interlaced: true }],
             ["jpegtran", { progressive: true }],
             ["optipng", { optimizationLevel: 5 }],
-            // [
-            //   "svgo",
-            //   {
-            //     plugins: [
-            //       {
-            //         removeViewBox: false,
-            //       },
-            //     ],
-            //   },
-            // ],
           ],
         },
       })
@@ -104,18 +93,6 @@ module.exports = {
         },
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-            },
-          },
-          "css-loader",
-        ],
-      },
-      {
         test: /\.s[ac]ss$/,
         use: [
           {
@@ -136,24 +113,6 @@ module.exports = {
           filename: `img/${filename("[ext]")}`,
         },
       },
-      // {
-      //   test: /\.(png|jpg|svg|gif|jpeg)$/i,
-      //   use: [{
-      //     loader: 'file-loader',
-      //     options: {
-      //       name: `./img/${filename('[ext]')}`,
-      //     },
-      //   }],
-      // },
-      // {
-      //   test: /\.woff2$/i,
-      //   use: [{
-      //     loader: 'file-loader',
-      //     options: {
-      //       name: `./fonts/${filename('[ext]')}`,
-      //     },
-      //   }],
-      // },
       {
         test: /\.js$/i,
         exclude: /node_modules/,
