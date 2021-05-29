@@ -18,11 +18,3 @@ jobs:
       - name: Tests check
         run: |
           npm run test
-      - name: Build 🔧
-        run: |
-          npm run build
-      - name: Deploy 🚀
-        uses: actions/checkout@v2
-        with:
-        branch: gh-pages
-        folder: dist
