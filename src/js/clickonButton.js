@@ -6,11 +6,9 @@ const clickonButton = (
   ul = document.querySelector(".weather__list"),
   createMap = readyMap
 ) => {
-  const listName = [...weatherListEl.querySelectorAll("li")];
-  const lisArray = [...ul.querySelectorAll("li")];
-  listName.forEach((el) => {
-    el.addEventListener("click", (e) => {
-      lisArray.forEach((item) => {
+  weatherListEl.addEventListener("click", (e) => {
+    if (e.target.tagName === "LI") {
+      [...ul.querySelectorAll("li")].forEach((item) => {
         if (item.children[0].textContent === e.target.textContent) {
           item.classList.remove("hidden");
           const coords = array.find(
@@ -21,7 +19,7 @@ const clickonButton = (
           item.classList.add("hidden");
         }
       });
-    });
+    }
   });
 };
 

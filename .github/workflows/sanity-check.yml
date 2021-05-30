@@ -18,3 +18,6 @@ jobs:
       - name: Tests check
         run: |
           npm run test
+      - name: Deploy
+        run: |
+          npm run deploy
