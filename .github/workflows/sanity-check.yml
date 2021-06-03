@@ -18,4 +18,3 @@ jobs:
       - name: Tests check
         run: |
           npm run test
-
