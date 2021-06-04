@@ -18,28 +18,19 @@ describe("Test firstRequest", () => {
 
   it("firstRequest called fetch, requestWeather, render and ", async () => {
     const result = {
-      coord: {
-        lat: 55.7522,
-        lon: 37.6156,
-      },
-      city: "Moscow",
-      json: () => result,
-    };
-    window.fetch = jest.fn().mockResolvedValue(result);
-
-    const requestWeather = jest.fn().mockImplementation(() => {
-      const obj = {
+      json: () => ({
         coord: {
           lat: 55.7522,
           lon: 37.6156,
         },
         city: "Moscow",
-        json: () => 43,
-      };
-      return obj;
-    });
-    const redyMap = jest.fn().mockImplementation((a, b) => a + b);
-    const render = jest.fn().mockImplementation((a, b) => a + b);
+      }),
+    };
+    window.fetch = jest.fn().mockResolvedValue(result);
+
+    const requestWeather = jest.fn().mockResolvedValue(result.json());
+    const redyMap = jest.fn();
+    const render = jest.fn();
     await firstRequest([], requestWeather, render, redyMap);
     const fetchResult = await fetch();
     await expect(fetchResult).toEqual(result);

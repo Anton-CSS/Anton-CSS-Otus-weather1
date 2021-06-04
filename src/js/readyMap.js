@@ -26,7 +26,7 @@ const readyMap = (lat, lon) => {
         // Необходимо указать данный тип макета.
         iconLayout: "default#image",
         // Своё изображение иконки метки.
-        iconImageHref: "/img/flags.svg",
+        iconImageHref: "./img/flags.svg",
         // Размеры метки.
         iconImageSize: [36, 36],
         // Смещение левого верхнего угла иконки относительно
