@@ -9,20 +9,9 @@ describe("Test render", () => {
   it("render called ClickonButton", () => {
     const array = [
       {
-        coord: {
-          lon: 37.6156,
-          lat: 55.7522,
-        },
-        weather: [
-          {
-            icon: "04d",
-          },
-        ],
-        main: {
-          temp: 291.54,
-          pressure: 1003,
-          humidity: 56,
-        },
+        coord: { lon: 37.6156, lat: 55.7522 },
+        weather: [{ icon: "04d" }],
+        main: { temp: 291.54, pressure: 1003, humidity: 56 },
         name: "Moscow",
       },
     ];
@@ -36,11 +25,11 @@ describe("Test render", () => {
                 <button>Submit</button>
                 <ul class="weather__name"></ul>
             </div>
-            <div id="map" style="width: 100%; height: 200px"></div>
+            <div id="map"></div>
         </div>
         `;
 
-    const ClickonButton = jest.fn().mockImplementation(() => 42);
+    const ClickonButton = jest.fn();
     const list = document.querySelector(".weather__list");
     const weather = document.querySelector(".weather__name");
     render(array, list, weather, ClickonButton);

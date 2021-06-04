@@ -43,23 +43,6 @@ describe("Test ClickonButton", () => {
         },
         name: "Rīga",
       },
-      {
-        coord: {
-          lon: -0.1257,
-          lat: 51.5085,
-        },
-        weather: [
-          {
-            icon: "04d",
-          },
-        ],
-        main: {
-          temp: 285.73,
-          pressure: 996,
-          humidity: 73,
-        },
-        name: "London",
-      },
     ];
 
     document.body.innerHTML = `
@@ -68,36 +51,28 @@ describe("Test ClickonButton", () => {
                 <h1>weather forecast</h1>
                 <ul class="weather__list">
                     <li>
-                       <h3>London</h3>
+                       <h3>Paris</h3>
                        <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="icon">
-                       <strong>Temperature: 285.73</strong>
-                       <strong>Pressure:996</strong>
-                       <strong>Humidity:73</strong>
+                       <strong>Temperature: 15.2</strong>
+                       <strong>Pressure:1019</strong>
+                       <strong>Humidity:62</strong>
                     </li>
                     <li>
                        <h3>Rīga</h3>
                        <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="icon">
-                       <strong>Temperature: 285.73</strong>
-                       <strong>Pressure:996</strong>
-                       <strong>Humidity:73</strong>
-                    </li>
-                    <li>
-                       <h3>Paris</h3>
-                       <img src="http://openweathermap.org/img/wn/04d@2x.png" alt="icon">
-                       <strong>Temperature: 285.73</strong>
-                       <strong>Pressure:996</strong>
-                       <strong>Humidity:73</strong>
+                       <strong>Temperature: 12.58</strong>
+                       <strong>Pressure:1009</strong>
+                       <strong>Humidity:66</strong>
                     </li>
                  </ul>
                 <input type="text" placeholder="Please enter the name of the city">
                 <button>Submit</button>
                 <ul class="weather__name">
-                    <li>London</li>
                     <li>Rīga</li>
                     <li>Paris</li>
                 </ul>
             </div>
-            <div id="map" style="width: 100%; height: 200px"></div>
+            <div id="map"></div>
         </div>
         `;
     const weatherName = document.querySelector(".weather__name");
@@ -109,6 +84,6 @@ describe("Test ClickonButton", () => {
     li.click();
     expect(readyMap).toHaveBeenCalled();
     expect(li.className).toBe("");
-    expect(lis[1].className).toBe("hidden");
+    expect(lis[0].className).toBe("hidden");
   });
 });
