@@ -11,23 +11,6 @@ describe("Test ClickonButton", () => {
     const array = [
       {
         coord: {
-          lon: 37.6156,
-          lat: 55.7522,
-        },
-        weather: [
-          {
-            icon: "04d",
-          },
-        ],
-        main: {
-          temp: 288.35,
-          pressure: 1019,
-          humidity: 62,
-        },
-        name: "Moscow",
-      },
-      {
-        coord: {
           lon: 2.3488,
           lat: 48.8534,
         },
