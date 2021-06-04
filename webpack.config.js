@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
@@ -14,16 +13,11 @@ const filename = (ext) =>
   isDev ? `[name].${ext}` : `[name].[contenthash].${ext}`;
 
 const optimization = () => {
-  const config = {
-    splitChunks: {
-      chunks: "all",
-    },
-  };
+  const config = {};
 
   if (isProd) {
     config.minimizer = [new CssMinimizerPlugin(), new TerserPlugin()];
   }
-
   return config;
 };
 
@@ -50,19 +44,6 @@ const plugins = () => {
     }),
   ];
 
-  if (isProd) {
-    base.push(
-      new ImageMinimizerPlugin({
-        minimizerOptions: {
-          plugins: [
-            ["jpegtran", { progressive: true }],
-            ["optipng", { optimizationLevel: 5 }],
-          ],
-        },
-      })
-    );
-  }
-
   return base;
 };
 
@@ -78,7 +59,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    hot: isDev,
+    hot: true,
   },
   devtool: isProd ? false : "source-map",
   optimization: optimization(),
